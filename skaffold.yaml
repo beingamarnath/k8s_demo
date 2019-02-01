@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: changeme
+    context: .
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/beingamarnath/k8s-demo:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: dev
+  build:
+    artifacts:
+    - docker: {}
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/beingamarnath/k8s-demo:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: k8s-demo
+        chartPath: charts/k8s-demo
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/beingamarnath/k8s-demo'
+          image.tag: '{{.DIGEST_HEX}}'
