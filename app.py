@@ -30,7 +30,7 @@ def hello():
     print(duration)
     print("c[:5] = " + str(c[:5]))
     print("c[-5:] = " + str(c[-5:]))
-    return "App Version: 1 <BR> GPU Time: " + str(duration) + "<BR> CPU Time: " +  str(duration2)
+    return "App Version: 2 <BR> GPU Time: " + str(duration) + "<BR> CPU Time: " +  str(duration2)
 
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=8080)
