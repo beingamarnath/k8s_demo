@@ -4,7 +4,7 @@ cupy-cuda100==5.2.0
 fastrlock==0.4
 Flask==1.0.2
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 llvmlite==0.27.0
 MarkupSafe==1.1.0
 numba==0.42.0
